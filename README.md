@@ -1,10 +1,10 @@
 # Data Visualizer — Klotski Puzzle + Physics State Graph
 
-> 🏆 **[AWARD NAME]** — [HACKATHON NAME] ([YEAR])
+> 🏆 **Best Technical Complexity** — ConHacks (2026)
 
 A Klotski-style sliding block puzzle game with a twist: every board state is visualized in real time as a 3D physics-based graph, so you can *see* the entire solution space as you play. Includes an AI hint system powered by Google Gemini.
 
-![Gameplay Screenshot](<!-- [ADD SCREENSHOT OR GIF HERE] -->)
+![Gameplay Screenshot](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/629/525/datas/original.png)
 
 ---
 
@@ -13,7 +13,7 @@ A Klotski-style sliding block puzzle game with a twist: every board state is vis
 - **Sliding Block Puzzle** — Classic Klotski rules on a 6×6 grid. Slide blocks to guide the Hero piece (ID `1`) to the exit.
 - **Live State-Space Graph** — A BFS solver runs on load and builds a full adjacency map of every reachable board state. Each state is rendered as a node in a 3D physics simulation — edges connect states that differ by one move.
 - **Real-Time Highlighting** — As you play, your current position in the state graph is highlighted live.
-- **AI Hints via Gemini** — Press "Ask Gemini" to send the current board matrix to Gemini Flash. The model returns an optimal move sequence which is parsed, saved, and animated step-by-step on the board.
+- **AI Hints via Gemini** — Press "Ask Gemini" to send the current board matrix to Gemini Flash. The model returns an optimal move sequence, which is parsed and saved.
 - **Auto-Solve Mode** — The board can automatically replay the BFS-computed winning path with smooth block slide animations.
 - **4 Built-in Levels** — JSON-defined levels of increasing complexity. Easily add your own.
 - **Custom Shaders** — GLSL shaders for the board, sliding blocks, and graph connection lines.
@@ -114,7 +114,6 @@ When you press **Ask Gemini**, the app:
 2. Sends it to `gemini-flash-latest` with a structured prompt describing Klotski rules and the win condition
 3. Parses the returned move sequence (format: `Step N: Block 'X' moved DIRECTION to (col, row)`)
 4. Saves the sequence to `Layouts/GeminiResponse.json`
-5. Animates each step on the board in order
 
 The API key is loaded at runtime from `gemini_api_key.n` (never hardcoded).
 
@@ -147,11 +146,13 @@ Then point `Board.cs`'s `LevelPath` export variable to your new file in the Godo
 
 ## 🧩 Known Limitations / Future Work
 
-- [ ] [ADD ANY KNOWN BUGS OR LIMITATIONS]
-- [ ] Mobile / touch input support
+- [ ] toggleable auto center (Moves camera in 3d space, placing generated image in the center)
+- [ ] Gemini API Animates each step on the board in order
+- [ ] Enhance Gemini responsiveness; target under \(2\)-second latency for initial AI response 
 - [ ] Procedural level generation
-- [ ] Move counter and leaderboard
-- [ ] [ANYTHING ELSE YOUR TEAM WANTS TO ADD]
+- [ ] Move counter
+- [ ] Multi-Directional movement (blocks move in 4 directions, not just 2)
+- [ ] More Block Types (2x2, 1x1, etc...)
 
 ---
 
@@ -159,18 +160,27 @@ Then point `Board.cs`'s `LevelPath` export variable to your new file in the Godo
 
 | Name | Role |
 |---|---|
-| [YOUR NAME] | [YOUR ROLE] |
-| [TEAMMATE 2] | [ROLE] |
-| [TEAMMATE 3] | [ROLE] |
+| [Ryan Hackbart](https://github.com/Yunehr) | UI Integration & Gemini API |
+| [Navid Khalaj Moazen](https://github.com/Navidmznn) | 2D Assets & Klotski Base Game |
+| [Ivan Granic](https://github.com/igranic8720) | BFS Algorithm |
+| [Ian Blackmore](https://github.com/IanBlackmore) | 3d Node Generation |
 
 ---
 
 ## 📄 License
 
-[CHOOSE A LICENSE — e.g. MIT, Apache 2.0, or leave as "All rights reserved"]
+MIT License
 
 ```
-[PASTE LICENSE TEXT HERE, OR LINK TO LICENSE FILE]
+MIT License
+
+Copyright (c) 2026 Ryan H.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
 ---
@@ -179,5 +189,6 @@ Then point `Board.cs`'s `LevelPath` export variable to your new file in the Godo
 
 - [Godot Engine](https://godotengine.org/) — open-source game engine
 - [Google Gemini](https://deepmind.google/technologies/gemini/) — AI hint system
-- [HACKATHON NAME] organizers and judges
-- [ANY OTHER LIBRARIES, ASSETS, OR INSPIRATIONS]
+- [2swap ~ I Solved Klotski](https://www.youtube.com/watch?v=YGLNyHd2w10) — Inspiration
+- ConHacks2026 organizers and judges
+
